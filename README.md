@@ -49,6 +49,7 @@ The `id` specified to `nuc` is used as the base name to produce keys and file na
 1. CLI key is the uppercase form of the `id`, prepended with two dashes, followed by an underscore, then the keys, an equal sign, and the value, like:
     --ID_KEY=value
 Keys can be nested by using two underscores together. For example:
+
 ```coffeescript
 # key: --ID_ONE__TWO__THREE=value is interpreted as:
 result =
@@ -79,40 +80,33 @@ Using `'id'` for the `id` these are all the files searched for:
 2. '/usr/lib/node_modules/id/id.json'
 3. '/usr/lib/node_modules/id/.idrc'
 4. '/usr/lib/node_modules/id/idrc'
-
 5. '/usr/local/lib/node_modules/id/id.conf'
 6. '/usr/local/lib/node_modules/id/id.json'
 7. '/usr/local/lib/node_modules/id/.idrc'
 8. '/usr/local/lib/node_modules/id/idrc'
-
 9. '/etc/id.conf'
 10. '/etc/id.json'
 11. '/etc/.idrc'
 12. '/etc/idrc'
-
 13. '/etc/id/id.conf'
 14. '/etc/id/id.json'
 15. '/etc/id/.idrc'
 16. '/etc/id/idrc'
-
 17. env.HOME + '/id.ini'
 18. env.HOME + '/id.conf'
 19. env.HOME + '/id.json'
 20. env.HOME + '/.idrc'
 21. env.HOME + '/idrc'
-
 22. env.HOME + '/id/id.ini'
 23. env.HOME + '/id/id.conf'
 24. env.HOME + '/id/id.json'
 25. env.HOME + '/id/.idrc'
 26. env.HOME + '/id/idrc'
-
 27. CWD + '/id.ini'
 28. CWD + '/id.conf'
 29. CWD + '/id.json'
 30. CWD + '/.idrc'
 31. CWD + '/idrc'
-
 32. CWD + '/id/id.ini'
 33. CWD + '/id/id.conf'
 34. CWD + '/id/id.json'
