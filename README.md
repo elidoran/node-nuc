@@ -9,6 +9,9 @@ Provides a flexible way to specify configuration values in multiple system place
 in an inuitive hierarchy. This allows users and systems to configure values for
 apps/modules in simple text files as well as override them with CLI args.
 
+Also provides a `nuc` command, installed globally, to review configuration values
+and set them at specific levels in the hierarchy.
+
 ## Install
 
 ```sh
@@ -34,7 +37,9 @@ Values are loaded from multiple places. Items in list override those below them.
 
 1. CLI  - command line arguments override all other sources of values
 2. ENV  - environment values are prepared by the OS and override all but CLI args
-3. local -
+3. local - find config files in the local CWD
+4. user - look in user's home directory
+5. system - shared user directory or module installation location
 
 
 ## Keys
@@ -114,5 +119,17 @@ Using `'id'` for the `id` these are all the files searched for:
 35. CWD + '/id/.idrc'
 36. CWD + '/id/idrc'
 
+
+## Why name it nuc ?
+
+Chance, mostly. I began the [nup](https://github.com/elidoran/node-nu) project and wanted to read configuration from multiple
+places on the system. I reviewed a bunch of modules providing configuration methods.
+The one I liked the most was one I saw long ago when I first moved to node: the [npmrc](https://docs.npmjs.com/files/npmrc) stuff.
+So, I decided I wanted to make a module I could use with any app or module I made.
+
+So, I needed a name for this new project coming directly from the `nu` (`nup`) project. Add a 'c' for configuration, and, it
+sounds like "nook", which, may be where we find all the configuration information, in the "nook and crannies"?
+
+I basically wanted to stop thinking about a name and begin writing the code. So, `nuc` it is.
 
 ### MIT License
