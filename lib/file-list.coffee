@@ -1,6 +1,5 @@
-# adds 5 files based on common info
-addGroup = require './add-group'
-path = require 'path'
+corepath = require 'path'
+
 # gets array of files which may be available with configuration data
 module.exports = (id) ->
   unless id? then throw new Error 'getFiles requires `id` value'
