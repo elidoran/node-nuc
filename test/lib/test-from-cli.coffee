@@ -1,5 +1,5 @@
 assert = require 'assert'
-fromCli = require '../../lib/from-Cli'
+fromCli = require '../../lib/from-cli'
 
 describe 'test fromCli', ->
 
