@@ -79,6 +79,8 @@ On *nix platforms:
 
 Using `'id'` for the `id` these are all the files searched for:
 
+NOTE: Outdated list... look at files for an up to date list (until I update this).
+
 1. '/usr/lib/node_modules/id/id.conf'
 2. '/usr/lib/node_modules/id/id.json'
 3. '/usr/lib/node_modules/id/.idrc'
