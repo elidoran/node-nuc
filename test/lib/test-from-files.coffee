@@ -6,23 +6,30 @@ fromFiles = require '../../lib/from-files.coffee'
 describe 'test fromFiles', ->
 
   id = 'testingid'
+  tempdir = path.resolve 'test', 'temp'
 
   describe 'with json file', ->
 
     it 'should read it as JSON into an object', ->
+      cwd = process.cwd()
+      process.chdir tempdir
 
-      jsonfile = path.join(process.cwd(), id + '.json')
+      jsonfile = path.join tempdir, id + '.json'
       json = some:'thing', something:'else', sub:{thing:{stuff:'more'}}
       fs.writeFileSync jsonfile, JSON.stringify json
-      {values} = fromFiles id:id, values:{}
+      {values} = fromFiles id:id, values:{}, platform:'darwin'
       fs.unlinkSync jsonfile
       assert.deepEqual values, json
+
+      process.chdir cwd
 
   describe 'with ini file', ->
 
     it 'should read it as ini into an object', ->
+      cwd = process.cwd()
+      process.chdir tempdir
 
-      inifile = path.join(process.cwd(), id + '.ini')
+      inifile = path.join tempdir, id + '.ini'
       iniobject =
         header:
           key1:'value1'
@@ -43,11 +50,10 @@ describe 'test fromFiles', ->
              [header3]
              key3
              """
-      
+
       fs.writeFileSync inifile, ini
-      platform = process.platform
-      process.platform = 'win32'
-      {values} = fromFiles id:id, values:{}
+      {values} = fromFiles id:id, values:{}, platform:'win32'
       fs.unlinkSync inifile
-      process.platform = platform
       assert.deepEqual values, iniobject
+
+      process.chdir cwd
