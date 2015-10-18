@@ -1,4 +1,7 @@
 # NUC
+[![Build Status](https://travis-ci.org/elidoran/node-nuc.svg?branch=master)](https://travis-ci.org/elidoran/node-nuc)
+[![Dependency Status](https://gemnasium.com/elidoran/node-nuc.png)](https://gemnasium.com/elidoran/node-nuc)
+[![npm version](https://badge.fury.io/js/nuc.svg)](http://badge.fury.io/js/nuc)
 
 Configuration via JSON and INI file hierarchy: CLI, ENV, local, user, system, global.
 
