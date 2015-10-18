@@ -9,7 +9,7 @@ getFiles = require './file-list'
 # if files exist then load them via JSON or INI
 # and override current `the.values`
 module.exports = (the) ->
-  for file in getFiles the.id
+  for file in getFiles(the)
     if fs.existsSync file
       if '.json' is path.extname file
         object = require file
