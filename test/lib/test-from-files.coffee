@@ -6,7 +6,8 @@ fromFiles = require '../../lib/from-files.coffee'
 describe 'test fromFiles', ->
 
   id = 'testingid'
-  tempdir = path.resolve 'test', 'temp'
+  tempdir = path.resolve '.', 'test', 'temp'
+  unless fs.existsSync tempdir then fs.mkdirSync tempdir
 
   describe 'with json file', ->
 
