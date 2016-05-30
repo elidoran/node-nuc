@@ -1,5 +1,5 @@
 
-0.2.0 - Released 1015/10/18
+0.2.0 - Released 2015/10/18
 
 1. added badges and Travis-CI
 2. moved file paths out to platform specific files
