@@ -10,8 +10,8 @@ module.exports = (options) ->
 
   # load patterns strings from platform specific file
   switch options.platform ? process.platform
-    when 'win32' then patterns = require('./win32-files.coffee') id:id
-    else patterns = require('./nix-files.coffee') id:id
+    when 'win32' then patterns = require('./win32-files') id:id
+    else patterns = require('./nix-files') id:id
 
   # turn each pattern into a path using `id`
   files.push pattern for pattern in patterns.array
