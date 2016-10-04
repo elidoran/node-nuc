@@ -9,7 +9,7 @@ Uses specified app/module `id` and process.platform value to look for config fil
 Also uses the CLI args and environment values.
 
 Provides a flexible way to specify configuration values in multiple system places
-in an inuitive hierarchy. This allows users and systems to configure values for
+in an intuitive hierarchy. This allows users and systems to configure values for
 apps/modules in simple text files as well as override them with CLI args.
 
 Also provides a `nuc` command, installed globally, to review configuration values
