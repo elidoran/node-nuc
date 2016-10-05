@@ -9,6 +9,10 @@
 2. added README docs for CLI commands
 3. created separate documentation for syntax flavors: vanilla JS, ES6, and CoffeeScript
 
+0.2.2 - Released 2016/10/04
+
+1. fixed `deepExtend` call by swapping order of args
+
 0.2.1 - Released 2016/10/04
 
 1. fixed typo in README
