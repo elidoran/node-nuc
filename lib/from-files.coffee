@@ -15,5 +15,5 @@ module.exports = (the) ->
         object = require file
       else
         object = ini.parse fs.readFileSync file, 'utf8'
-      the.values = deepExtend object, the.values
+      the.values = deepExtend the.values, object
   return the
