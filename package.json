@@ -24,7 +24,6 @@
     "nave": "^0.5.3"
   },
   "dependencies": {
-    "commander": "^2.9.0",
     "deep-extend": "^0.4.1",
     "ini": "^1.3.4"
   }
