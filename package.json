@@ -1,6 +1,6 @@
 {
   "name": "nuc",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Configuration via JSON and INI from hierarchy of files.",
   "main": "lib",
   "bin": "bin/nuc.js",
