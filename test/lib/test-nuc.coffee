@@ -7,16 +7,19 @@ describe 'test nuc', ->
 
   describe 'without id', ->
 
-    it 'should throw error', ->
+    it 'should return error', ->
 
-      assert.throws nuc, /`id` required for nuc/
+      actual   = nuc()
+      expected = __error: '`id` required for nuc'
+      assert.deepEqual actual, expected
 
   describe 'without defaults', ->
 
     it 'should use an empty object', ->
-      values = undefined
+
       values = nuc id:id
       assert.equal values?, true
+      assert.deepEqual values, {}
 
   describe 'with defaults', ->
 
@@ -24,5 +27,3 @@ describe 'test nuc', ->
       defaults = some:'thing',else:'an',other:'thing'
       result = nuc id:id, defaults:defaults
       assert.deepEqual result, defaults
-
-# TODO: make test files in multiple places and test they are found...

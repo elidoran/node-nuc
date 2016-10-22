@@ -1,60 +1,78 @@
 fs        = require 'fs'
-path      = require 'path'
+corepath  = require 'path'
 assert    = require 'assert'
 fromFiles = require '../../lib/from-files.coffee'
 
 describe 'test fromFiles', ->
 
   id = 'testingid'
-  tempdir = path.resolve '.', 'test', 'temp'
-  unless fs.existsSync tempdir then fs.mkdirSync tempdir
 
-  describe 'with json file', ->
+  describe 'with multiple json files in hierarchy', ->
 
-    it 'should read it as JSON into an object', ->
+    it 'should find all the files', ->
+
+      tempdir   = corepath.resolve __dirname, '..', 'temp'
+      topdir    = corepath.resolve tempdir, 'top'
+      middledir = corepath.resolve topdir, 'middle'
+      bottomdir = corepath.resolve middledir, 'bottom'
+
+      # remember where we are so we can return
       cwd = process.cwd()
-      process.chdir tempdir
 
-      jsonfile = path.join tempdir, id + '.json'
-      json = some:'thing', something:'else', sub:{thing:{stuff:'more'}}
-      fs.writeFileSync jsonfile, JSON.stringify json
-      {values} = fromFiles id:id, values:{}, platform:'darwin'
-      fs.unlinkSync jsonfile
-      assert.deepEqual values, json
+      # move to the bottom of the temp dir
+      process.chdir bottomdir
 
+      # now have fromFiles find it
+      options =
+        id: id
+        platform: 'darwin'
+        store:
+          append: (file) ->
+            # console.log 'append:',file
+            options.store.array.push file
+          array: []
+
+      {objects} = fromFiles options
+
+      # move back
       process.chdir cwd
 
-  describe 'with ini file', ->
+      assert.equal objects[0], corepath.join tempdir, 'testingid', 'testingid.json'
+      assert.equal objects[1], corepath.join topdir, 'testingid', 'testingid.json'
+      assert.equal objects[2], corepath.join middledir, 'testingid.json'
+      assert.equal objects[3], corepath.join bottomdir, 'testingid.json'
 
-    it 'should read it as ini into an object', ->
+  describe 'with multiple ini files in hierarchy', ->
+
+    it 'should final all the files', ->
+
+      tempdir   = corepath.resolve __dirname, '..', 'temp2'
+      topdir    = corepath.resolve tempdir, 'top'
+      middledir = corepath.resolve topdir, 'middle'
+      bottomdir = corepath.resolve middledir, 'bottom'
+
+      # remember where we are so we can return
       cwd = process.cwd()
-      process.chdir tempdir
 
-      inifile = path.join tempdir, id + '.ini'
-      iniobject =
-        header:
-          key1:'value1'
-        header2:
-          key2:'value2'
-          key3:'value3'
-        header3:
-          key3:true
+      # move to the bottom of the temp dir
+      process.chdir bottomdir
 
-      ini  = """
-             [header]
-             key1=value1
+      # now have fromFiles find it
+      options =
+        id: id
+        platform: 'darwin'
+        store:
+          append: (file) ->
+            # console.log 'append:',file
+            options.store.array.push file
+          array: []
 
-             [header2]
-             key2=value2
-             key3=value3
+      {objects} = fromFiles options
 
-             [header3]
-             key3
-             """
-
-      fs.writeFileSync inifile, ini
-      {values} = fromFiles id:id, values:{}, platform:'win32'
-      fs.unlinkSync inifile
-      assert.deepEqual values, iniobject
-
+      # move back
       process.chdir cwd
+
+      assert.equal objects[0], corepath.join tempdir, 'testingid', 'testingid.ini'
+      assert.equal objects[1], corepath.join topdir, 'testingid', 'testingid.ini'
+      assert.equal objects[2], corepath.join middledir, 'testingid.ini'
+      assert.equal objects[3], corepath.join bottomdir, 'testingid.ini'
