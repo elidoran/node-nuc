@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "deep-extend": "^0.4.1",
-    "ini": "^1.3.4"
+    "ini": "^1.3.4",
+    "value-store": "^0.3.2"
   }
 }
