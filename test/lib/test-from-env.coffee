@@ -1,7 +1,7 @@
 assert = require 'assert'
 fromEnv = require '../../lib/from-env'
 
-describe.only 'test fromEnv', ->
+describe 'test fromEnv', ->
 
   tests = [
     {desc:'single key', should:'pair them', key:'ID_KEY', value:'value', answer:{KEY:'value', __source:'env'}}
