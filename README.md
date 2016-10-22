@@ -22,7 +22,7 @@ and set them at specific levels in the hierarchy.
 npm install -g nuc
 
 # Install locally to get configuration for your module/app
-npm install nuc
+npm install nuc --save
 ```
 
 ## Usage: the values object
