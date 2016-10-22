@@ -85,6 +85,35 @@ For example, a user may have a configuration folder in their home directory at `
 
 The help information and usage displayed by the command itself is more descriptive than the documentation here. Install it and check it out :)
 
+The first three commands in the list below are informational tasks which don't require an app "id". The later ones all require an app "id" to perform. The app "id" can be specified on the command line each time as the first arg to `nuc`, and, it must have an @ symbol in front of it.
+
+For example:
+
+```sh
+nuc @someid list each
+nuc @someid get somekey
+nuc @someid add somekey somevalue
+```
+
+It may become tedious typing the "id" for each command. As a shortcut I've added the ability to specify the "id" in a file. When you run `nuc` commands it will look in the current working directory for a file named '.nuc.name'. If it finds it, it will read its contents expecting to find a single word which it will use as the app "id".
+
+For example, if the PWD had a `.nuc.name` file like:
+
+```text
+theapp
+```
+
+Then, when you're in that same directory, you can leave out the app "id" from the command and it will use that. For example, now you can do:
+
+```sh
+nuc list each
+nuc get somekey
+nuc add somekey somevalue
+```
+
+It will use "theapp" as the app "id" for those commands the same as if you typed "@theapp" as the second arg to the `nuc` command.
+
+
 The cli subcommands are:
 
 1. version - prints the version to the console
@@ -97,6 +126,42 @@ The cli subcommands are:
 8. remove - the opposite of `set`, it will remove the key from the first scope it is found. You may specific the scope to remove it from, or, scope 'all' to remove it from all scopes. (As I write this, I realize I haven't completed the "remove from all" functionality yet.)
 
 TODO: list the values used by `nuc` by default and what the keys are to override them.
+
+These are not all the commands. Just a minimum of examples...
+
+```sh
+nuc version
+
+nuc usage
+
+# there's more help info than these...
+nuc help
+nuc help usage
+nuc help list
+nuc help scope
+
+# list all scopes together, or, a single scope, or each scope separately
+nuc @someid list
+nuc @someid list local
+nuc @someid list each
+
+# get a key's value from anywhere it's found, or look in a specific scope...
+nuc @someid get somekey
+nuc @someid get somekey user
+
+# set into an existing file, or create a new one, or into a specific scope
+nuc @someid set somekey value
+nuc @someid set key2 value2 local
+
+# key 'somekey' will then have the value: [ 'value', 'value2' ]
+nuc @someid add somekey value2
+
+# remove a key from the first scope it's found in, or, from a specific scope
+nuc @someid remove somekey
+nuc @someid remove somekey user
+
+# there's more...
+```
 
 
 ## Value Hierarchy
