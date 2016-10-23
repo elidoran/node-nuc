@@ -45,8 +45,6 @@ Error.stackTraceLimit = 3
 # use to extract the id from the command
 findId = require './find-id'
 
-process.env.TESTID_key2 = 'value2'
-
 # `nuc` uses itself for its own configuration values
 values = require('../lib') id:'nuc', defaults:
   # by default, let's tell them how to use the CLI
