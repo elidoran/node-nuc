@@ -106,7 +106,7 @@ error = null
 try
 
   # if there was an error then store that object as `result`
-  if id.error? then result = id
+  if id?.error? then result = id
 
   # else, continue on to run the subcommand for a new result
   else
