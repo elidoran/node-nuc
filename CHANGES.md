@@ -1,3 +1,14 @@
+
+0.3.2 - Released 2016/10/23
+
+1. added missing null check
+2. removed random process.env key assignment
+
+
+0.3.1 - Released 2016/10/23
+
+1. published without the random files in the project root
+
 0.3.0 - Released 2016/10/22
 
 1. added CLI sub-commands: get, set, add, remove, list, help, usage, version
