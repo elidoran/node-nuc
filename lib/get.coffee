@@ -1,3 +1,4 @@
+findId = require './find-id'
 
 module.exports = (options = {}) ->
 
@@ -16,12 +17,8 @@ module.exports = (options = {}) ->
     require './from-cli'   # from process.argv using 'id'
   ]
 
-  # if they didn't specify an id, then try to find it, unless they say not to
-  unless options.id?
-    unless options.noFindId then options.id = require('./find-id')()
-    # use __error instead of the usual 'error' in case they use 'error' as
-    # a key in the config values we look up.
-    unless options.id? then return __error: '`id` required for nuc'
+  result = findId options
+  if result?.__error? then return result
 
   # we don't do this by default, so, only do when explicitly set to true
   #if options.stack is true # options.default may be undefined, that's okay

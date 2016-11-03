@@ -2,11 +2,8 @@
 module.exports = (options) ->
 
   # if they didn't specify an id, then try to find it, unless they say not to
-  unless options.id?
-    unless options.noFindId then options.id = require('./find-id')()
-    # use __error instead of the usual 'error' in case they use 'error' as
-    # a key in the config values we look up.
-    unless options.id? then return __error: '`id` required for nuc'
+  result = findId options
+  if result?.__error? then return result
 
   corepath = require 'path'
 
