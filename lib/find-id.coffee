@@ -1,6 +1,11 @@
 
 module.exports = ->
 
+  # search for an npm config environment variable
+  id = process.env.NUCID ? process.env.npm_package_config_nucid
+
+  if id? then return id
+
   # otherwise, we'd better find a .nuc.name file...
   file = require('path').resolve process.cwd(), '.nuc.name'
 
