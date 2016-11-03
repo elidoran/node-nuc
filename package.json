@@ -4,11 +4,21 @@
   "description": "Configuration via JSON and INI from hierarchy of files.",
   "main": "lib",
   "bin": "bin/nuc.js",
+  "keywords": [
+    "runtime",
+    "config",
+    "rc",
+    "configuration",
+    "values",
+    "hierarchy",
+    "defaults",
+    "environment"
+  ],
   "author": "Eli Doran <eli+npm@elidoran.com>",
   "license": "MIT",
   "scripts": {
     "compile": "coffee --bare --compile lib bin",
-    "clean": "rm -rf lib/*.js bin/command.js bin/do-*.js bin/find-id.js",
+    "clean": "rm -rf lib/*.js bin/command.js bin/do-*.js",
     "prepublish": "npm run compile",
     "postpublish": "npm run clean",
     "test": "mocha --compilers coffee:coffee-script/register --reporter spec --bail --check-leaks test/lib test/bin"
