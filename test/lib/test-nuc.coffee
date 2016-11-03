@@ -10,8 +10,8 @@ describe 'test nuc', ->
     it 'should return error', ->
 
       actual   = nuc()
-      expected = __error: '`id` required for nuc'
-      assert.deepEqual actual, expected
+      assert.equal actual.__error, '`id` required for nuc'
+      assert actual.reason
 
   describe 'without defaults', ->
 
