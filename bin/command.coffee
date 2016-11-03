@@ -43,7 +43,7 @@ process.title = 'nuc'
 Error.stackTraceLimit = 3
 
 # use to extract the id from the command
-findId = require './find-id'
+findId = require '../lib/find-id'
 
 # `nuc` uses itself for its own configuration values
 values = require('../lib') id:'nuc', defaults:
