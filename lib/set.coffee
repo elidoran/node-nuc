@@ -41,8 +41,6 @@ module.exports = (options) ->
   if result?.files?.length > 0
     closestExistingFile = result.files[result.files.length - 1]
 
-  # console.log 'closest file:',closestExistingFile
-
   # 2. either read the file we found, or, add an empty object
   store.prepend closestExistingFile ? {}
 
