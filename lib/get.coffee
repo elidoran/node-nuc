@@ -1,5 +1,5 @@
 
-module.exports = (options) ->
+module.exports = (options = {}) ->
 
   # # get what we need (inside function to avoid holding refs in memory)
 
@@ -16,9 +16,12 @@ module.exports = (options) ->
     require './from-cli'   # from process.argv using 'id'
   ]
 
-  # use __error instead of the usual 'error' in case they use 'error' as
-  # a key in the config values we look up.
-  unless options?.id? then return __error: '`id` required for nuc'
+  # if they didn't specify an id, then try to find it, unless they say not to
+  unless options.id?
+    unless options.noFindId then options.id = require('./find-id')()
+    # use __error instead of the usual 'error' in case they use 'error' as
+    # a key in the config values we look up.
+    unless options.id? then return __error: '`id` required for nuc'
 
   # we don't do this by default, so, only do when explicitly set to true
   #if options.stack is true # options.default may be undefined, that's okay
@@ -69,7 +72,7 @@ module.exports = (options) ->
 
     # if there was an error, return result now
     if result.error? then return result
-    
+
     # process objects
     for object in result.objects
 
