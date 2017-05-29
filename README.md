@@ -270,4 +270,4 @@ sounds like "nook", which, may be where we find all the configuration informatio
 
 I basically wanted to stop thinking about a name and begin writing the code. So, `nuc` it is.
 
-### MIT License
+### [MIT License](LICENSE)
