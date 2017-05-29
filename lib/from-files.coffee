@@ -1,4 +1,3 @@
-
 getFiles = require './get-files'
 
 module.exports = (options) ->
@@ -17,15 +16,8 @@ module.exports = (options) ->
 
   for file in result.files
 
-    # let's see if we've already appended this file before...
-    found = false       # mark whether we found it
-    for each of set     # iterate over keys in `set`, which are files
-      if each is file   # if they match then...
-        found = true    # we found it
-        break           # so we're all done looping
-
     # only append it if we didn't find it already in there
-    if not found
+    if set[file] isnt true
 
       # remember we already appended this file
       set[file] = true
@@ -36,10 +28,10 @@ module.exports = (options) ->
       # let's pop it out of there
       object = store.array.pop()
 
-      # add the object to our results
-      objects.push object
+      # add the object to our results if it has some keys
+      if Object.keys(object).length > 0 then objects.push object
 
-  return objects:objects
+  return {objects}
 
 # everything except 'cli' and 'env' are handled by files
 module.exports.scopes = [ 'global', 'system', 'user', 'local', 'each', 'all' ]
