@@ -15,7 +15,7 @@ module.exports = (options) ->
 
     # ensure it's a writable scope
     unless options.scope in [ 'local', 'user', 'system' ]
-      return error:'May only change configuration in writable scopes local, user, and system. Not in:' + options.scope
+      return error: 'writable scopes: local, user, system. not: ' + options.scope
 
     # it's okay, so use it
     searchScope = createScope = options.scope
