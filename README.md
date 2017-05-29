@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/elidoran/node-nuc.svg?branch=master)](https://travis-ci.org/elidoran/node-nuc)
 [![Dependency Status](https://gemnasium.com/elidoran/node-nuc.png)](https://gemnasium.com/elidoran/node-nuc)
 [![npm version](https://badge.fury.io/js/nuc.svg)](http://badge.fury.io/js/nuc)
+[![Coverage Status](https://coveralls.io/repos/github/elidoran/node-nuc/badge.svg?branch=master)](https://coveralls.io/github/elidoran/node-nuc?branch=master)
 
 Configuration via JSON and INI file hierarchy: cli, env, local, user, system, global.
 
@@ -22,7 +23,7 @@ and set them at specific levels in the hierarchy.
 npm install -g nuc
 
 # Install locally to get configuration for your module/app
-npm install nuc --save
+npm install --save nuc
 ```
 
 ## Usage: the values object
