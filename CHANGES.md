@@ -1,3 +1,8 @@
+## 0.5.1 - Released 2017/05/29
+
+1. added missing `findId` to `set.coffee`
+2. renamed "compile" script to "build"
+
 ## 0.5.0 - Released 2017/05/29
 
 1. fix `options.defaults` provided to `buildValueStore`
