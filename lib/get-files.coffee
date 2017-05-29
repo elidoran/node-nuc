@@ -60,11 +60,10 @@ module.exports = (options) ->
       # then, the read access will happen when we try to read the file
       try # check if it is a file...must use stats
         stats = fs.statSync file
-        if stats.isFile()
-          files.push file
+        if stats.isFile() then files.push file
       catch error
         ; # ignore error, it means we can't read it...
           # either it doesn't exist, or, we don't have read permissions
 
   # all done
-  return files:files
+  return {files}
