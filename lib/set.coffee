@@ -1,3 +1,4 @@
+findId = require './find-id'
 
 module.exports = (options) ->
 
