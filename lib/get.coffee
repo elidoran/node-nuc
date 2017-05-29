@@ -71,7 +71,7 @@ module.exports = (options = {}) ->
     if result.error? then return result
 
     # process objects
-    for object in result.objects
+    for object in result.objects when Object.keys(object).length > 0
 
       # if collapsing into a single object then collapse into `values`
       if values? then deepExtend values, object
