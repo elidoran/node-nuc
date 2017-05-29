@@ -18,9 +18,9 @@
   "license": "MIT",
   "scripts": {
     "lint": "coffeelint -f build/coffeelint.json lib",
-    "compile": "coffee --bare --compile --no-header lib bin",
+    "build": "coffee --bare --compile --no-header lib bin",
     "clean": "rm -rf lib/*.js bin/command.js bin/do-*.js",
-    "prepublish": "npm run compile",
+    "prepublish": "npm run build",
     "postpublish": "npm run clean",
     "test": "mocha --compilers coffee:coffee-script/register --reporter spec --bail --check-leaks test/lib test/bin",
     "test4": "nave use 4.8 npm test",
