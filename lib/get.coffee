@@ -24,7 +24,7 @@ module.exports = (options = {}) ->
   #if options.stack is true # options.default may be undefined, that's okay
   # let's use this for file reading, so, always create it.
   # keep deleting what we read in unless options.stack is true
-  store = buildValueStore options.default
+  store = buildValueStore array: [options.defaults]
 
   # we do this by default, so, only *don't* when explicitly set to false
   unless options.collapse is false
