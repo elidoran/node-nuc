@@ -20,11 +20,10 @@ module.exports = (options = {}) ->
   result = findId options
   if result?.__error? then return result
 
-  # we don't do this by default, so, only do when explicitly set to true
-  #if options.stack is true # options.default may be undefined, that's okay
   # let's use this for file reading, so, always create it.
-  # keep deleting what we read in unless options.stack is true
-  store = buildValueStore array: [options.defaults]
+  # keep deleting what we read in unless options.stack is true.
+  # include `options.defaults` when specified.
+  store = buildValueStore array: if options.defaults? then [options.defaults] else []
 
   # we do this by default, so, only *don't* when explicitly set to false
   unless options.collapse is false
