@@ -1,6 +1,8 @@
 ## 0.5.2 - Released 2017/06/01
 
 1. only include `options.defaults` to `buildValueStore` when they exist.
+2. add node 8 to Travis CI and package's test scripts
+3. add `package-lock.json` due to npm version 5
 
 ## 0.5.1 - Released 2017/05/29
 
