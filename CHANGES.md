@@ -1,3 +1,7 @@
+## 0.5.2 - Released 2017/06/01
+
+1. only include `options.defaults` to `buildValueStore` when they exist.
+
 ## 0.5.1 - Released 2017/05/29
 
 1. added missing `findId` to `set.coffee`
